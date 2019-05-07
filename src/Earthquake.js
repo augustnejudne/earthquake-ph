@@ -1,6 +1,6 @@
 import React  from 'react';
 
-const Earthquake = ({ data, setLoc, setModal }) => {
+const Earthquake = ({ data, setData, setModal }) => {
   const { date, lat, lon, depth, mag, location } = data;
 
   const magCategory = () => {
@@ -23,7 +23,7 @@ const Earthquake = ({ data, setLoc, setModal }) => {
   return (
     <tr style={{...styles, cursor: 'pointer'}} onClick={() => {
       setModal(true)
-      setLoc({lat, lon})
+      setData(data);
     }}>
       <td>{date}</td>
       <td>{lat}</td>

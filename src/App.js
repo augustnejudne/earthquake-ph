@@ -5,16 +5,16 @@ import {
 } from 'body-scroll-lock';
 import Earthquake from './Earthquake';
 import Gmap from './Gmap';
-import data from './earthquakeData';
+import earthquakeData from './earthquakeData';
 
 const App = () => {
-  const [loc, setLoc] = useState(false);
+  const [data, setData] = useState(null);
   const [modal, setModal] = useState(false);
   const body = document.querySelector('body');
 
   useEffect(() => {
     if (!modal) {
-      setLoc(false);
+      setData(null);
       enableBodyScroll(body);
     } else {
       disableBodyScroll(body);
@@ -23,8 +23,9 @@ const App = () => {
 
   return (
     <Fragment>
+      <div className="no-mobile">DO NOT VIEW THIS ON MOBILE BECAUSE IT'S UGLY ON MOBILE</div>
       <div className="container">
-        {modal && <Gmap loc={loc} setModal={setModal} />}
+        {modal && <Gmap data={data} setModal={setModal} />}
         <h1 className="text-center mt-3">Philippine Earthquake Monitor</h1>
         <h5>Instructions:</h5>
         <p>
@@ -59,8 +60,8 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((d, i) => (
-            <Earthquake key={i} data={d} setLoc={setLoc} setModal={setModal} />
+          {earthquakeData.map((d, i) => (
+            <Earthquake key={i} data={d} setData={setData} setModal={setModal} />
           ))}
         </tbody>
       </table>

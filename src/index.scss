@@ -15,7 +15,7 @@ code {
 
 .gmap {
   position: fixed;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 480px;
@@ -66,5 +66,34 @@ code {
   div:nth-child(4) {
     background: #ff0000;
     color: white;
+  }
+}
+
+.modal-info-container {
+  td,
+  th {
+    padding: 5px;
+  }
+}
+
+.no-mobile {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  position: fixed;
+  top: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .no-mobile {
+    display: none;
   }
 }
