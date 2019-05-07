@@ -92,6 +92,16 @@ code {
   top: 0;
 }
 
+.loading {
+  background: white;
+  width: 480px;
+  height: 360px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 768px) {
   .no-mobile {
     display: none;

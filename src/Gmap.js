@@ -1,7 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 const Gmap = ({ data, setModal }) => {
   const { date, lat, lon, depth, mag, location } = data;
+  const [loading, setLoading] = useState(true);
+
   return (
     <Fragment>
       <div className="modal-bg" onClick={() => setModal(false)} />
@@ -40,11 +42,19 @@ const Gmap = ({ data, setModal }) => {
               </tbody>
             </table>
           </div>
+          {loading && (
+            <div className="loading">
+              <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          )}
           <iframe
             src={`http://maps.google.com/maps?q=${lat}, ${lon}&z=7&output=embed`}
             width="480"
             height="320"
             frameBorder="0"
+            onLoad={() => setLoading(false)}
             style={{ border: 0 }}
             title="Gmap"
           />
