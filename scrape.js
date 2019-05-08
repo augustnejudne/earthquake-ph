@@ -14,7 +14,8 @@ instance
   .get('https://earthquake.phivolcs.dost.gov.ph')
   .then(res => {
     const $ = cheerio.load(res.data);
-    const tableData = $('table:nth-child(3) tr').each((i, el) => {
+    writeStream.write('export default [');
+    $('table:nth-child(3) tr').each((i, el) => {
       const date = $(el)
         .find('td:nth-child(1)')
         .text()
@@ -41,7 +42,8 @@ instance
         .replace(/\s\s+/g, '');
 
       // Write row to JSfile
-      writeStream.write(`{
+      if (!isNaN(parseFloat(lat))) {
+        writeStream.write(`{
         date: '${date}',
         lat: '${lat}',
         lon: '${lon}',
@@ -49,6 +51,8 @@ instance
         mag: '${mag}',
         location: '${location}',
       },`);
+      }
     });
+    writeStream.write(']');
   })
   .catch(e => console.log(e));

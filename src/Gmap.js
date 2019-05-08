@@ -8,8 +8,8 @@ const Gmap = ({ data, setModal }) => {
     <Fragment>
       <div className="modal-bg" onClick={() => setModal(false)} />
       <div className="gmap">
-        <button onClick={() => setModal(false)} className="close-button">
-          &times;
+        <button onClick={()=> setModal(false)} type="button" className="close close-button" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
         </button>
         <div className="modal-info-container">
           <div className="table-container" style={{ background: 'white' }}>
@@ -44,13 +44,14 @@ const Gmap = ({ data, setModal }) => {
           </div>
           {loading && (
             <div className="loading">
-              <div class="spinner-border text-primary" role="status">
-                <span class="sr-only">Loading...</span>
+              <div className="spinner-border text-primary" role="status">
+                <span className="sr-only">Loading...</span>
               </div>
             </div>
           )}
           <iframe
-            src={`http://maps.google.com/maps?q=${lat}, ${lon}&z=7&output=embed`}
+            src={`https://maps.google.com/maps?q=${lat}, ${lon}&z=7&output=embed`}
+            className="gmapIframe"
             width="480"
             height="320"
             frameBorder="0"

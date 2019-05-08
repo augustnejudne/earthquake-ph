@@ -1,8 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-} from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import Earthquake from './Earthquake';
 import Gmap from './Gmap';
 import earthquakeData from './earthquakeData';
@@ -23,7 +20,6 @@ const App = () => {
 
   return (
     <Fragment>
-      <div className="no-mobile">DO NOT VIEW THIS ON MOBILE BECAUSE IT'S UGLY ON MOBILE</div>
       <div className="container">
         {modal && <Gmap data={data} setModal={setModal} />}
         <h1 className="text-center mt-3">Philippine Earthquake Monitor</h1>
@@ -31,15 +27,16 @@ const App = () => {
         <p>
           Click on a row to view the location of the epicenter on google maps.
         </p>
+        <div className="mb-3">
+          
         <h5>Legend</h5>
-        <p>
-          <div className="legend">
-            <div>Intensity 1 - 2.9</div>
-            <div>Intensity 3 - 4.9</div>
-            <div>Intensity 5 - 5.9</div>
-            <div>Intensity 6 and above</div>
-          </div>
-        </p>
+        <div className="legend">
+          <div>Intensity 1 - 2.9</div>
+          <div>Intensity 3 - 4.9</div>
+          <div>Intensity 5 - 5.9</div>
+          <div>Intensity 6 and above</div>
+        </div>
+        </div>
         <h5>About:</h5>
         <p>
           The data on this page had to be scraped from
@@ -52,16 +49,21 @@ const App = () => {
         <thead className="thead-dark">
           <tr className="text-center">
             <th>Date</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Depth</th>
-            <th>Magnitude</th>
+            <th className="hide-column-on-mobile">Latitude</th>
+            <th className="hide-column-on-mobile">Longitude</th>
+            <th className="hide-column-on-mobile">Depth</th>
+            <th>Mag</th>
             <th>Location</th>
           </tr>
         </thead>
         <tbody>
           {earthquakeData.map((d, i) => (
-            <Earthquake key={i} data={d} setData={setData} setModal={setModal} />
+            <Earthquake
+              key={i}
+              data={d}
+              setData={setData}
+              setModal={setModal}
+            />
           ))}
         </tbody>
       </table>

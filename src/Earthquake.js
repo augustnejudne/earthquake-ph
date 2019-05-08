@@ -26,9 +26,9 @@ const Earthquake = ({ data, setData, setModal }) => {
       setData(data);
     }}>
       <td>{date}</td>
-      <td>{lat}</td>
-      <td>{lon}</td>
-      <td>{depth}</td>
+      <td className="hide-column-on-mobile">{lat}</td>
+      <td className="hide-column-on-mobile">{lon}</td>
+      <td className="hide-column-on-mobile">{depth}</td>
       <td>{mag}</td>
       <td>{location}</td>
     </tr>

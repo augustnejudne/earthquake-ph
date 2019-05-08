@@ -33,7 +33,8 @@ code {
 
 .close-button {
   border: 0;
-  background: red;
+  background: red !important;
+  opacity: 1;
   color: white;
   border-radius: 100%;
   width: 30px;
@@ -47,10 +48,18 @@ code {
   right: -5%;
   transform: translate(-50%, -50%);
 }
+.close-button:hover {
+  opacity: 1 !important;
+  color: white;
+}
 
 .legend {
+  display: flex;
+  flex-direction: column;
+  // align-items: flex-start;
+  width: 15rem;
   > * {
-    display: inline-block;
+    // display: inline-block;
     padding: 5px 8px;
     margin: 0 5px 0 0;
   }
@@ -102,8 +111,21 @@ code {
   align-items: center;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
   .no-mobile {
     display: none;
+  }
+  .hide-column-on-mobile {
+    display: none;
+  }
+  .gmap,
+  .gmapIframe,
+  .loading {
+    width: 320px;
+    height: 280px;
+  }
+
+  .gmap {
+    top: 180px;
   }
 }
