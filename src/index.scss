@@ -33,7 +33,7 @@ code {
 
 .close-button {
   border: 0;
-  background: red !important;
+  background: black !important;
   opacity: 1;
   color: white;
   border-radius: 100%;
@@ -41,12 +41,16 @@ code {
   height: 30px;
   font-size: 1.8rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: absolute;
   top: 0;
   right: -5%;
   transform: translate(-50%, -50%);
+  line-height: -10px;
+  span {
+    transform: translateY(-3px);
+  }
 }
 .close-button:hover {
   opacity: 1 !important;
